@@ -5,35 +5,39 @@ import java.util.List;
 import java.util.Objects;
 
 public class Vertex {
-    private List<Edge> neigbourhood;
+    private List<Edge> neighbourhood;
     private String label;
 
     public Vertex(String label) {
         this.label = label;
-        this.neigbourhood = new ArrayList<>();
+        this.neighbourhood = new ArrayList<>();
     }
 
     public void addNeighbour(Edge edge){
         if(containsNeighbour(edge)){
             return;
         }
-        this.neigbourhood.add(edge);
+        this.neighbourhood.add(edge);
     }
 
     public boolean containsNeighbour(Edge edge){
-        return this.neigbourhood.contains(edge);
+        return this.neighbourhood.contains(edge);
+    }
+
+    public Edge getNeighbour(int index){
+        return this.neighbourhood.get(index);
     }
 
     Edge removeNeighbour(int index){
-        return this.neigbourhood.remove(index);
+        return this.neighbourhood.remove(index);
     }
 
     public void removeNeighbour(Edge edge){
-        this.neigbourhood.remove(edge);
+        this.neighbourhood.remove(edge);
     }
 
-    public int getNeighourhoodSize(){
-        return this.neigbourhood.size();
+    public int getNeighbourhoodSize(){
+        return this.neighbourhood.size();
     }
 
     public String getLabel(){
