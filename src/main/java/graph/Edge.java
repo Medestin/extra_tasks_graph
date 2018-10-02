@@ -68,9 +68,9 @@ public class Edge implements Comparable<Edge> {
     @Override
     public String toString() {
         return "Edge{" +
-                "vertexOne: " + vertexOne +
-                ", vertexTwo: " + vertexTwo +
-                ", weight: " + weight +
+                "v1: " + vertexOne +
+                ", v2: " + vertexTwo +
+                ", w: " + weight +
                 '}';
     }
 }

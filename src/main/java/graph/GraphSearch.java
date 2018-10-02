@@ -3,11 +3,10 @@ package graph;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
-public final class BreadthFirstSearch {
+public final class GraphSearch {
     private static final List<Edge> alreadySearched = new ArrayList<>();
-    private static final Queue<Vertex> searchQueue = new ArrayDeque<>();
+    private static final ArrayDeque<Vertex> searchQueue = new ArrayDeque<>();
 
     public static void bFS(Graph graph, Vertex startingPoint) {
         alreadySearched.clear();
@@ -20,7 +19,23 @@ public final class BreadthFirstSearch {
         searchQueue.offer(graph.getVertex(startingPoint.getLabel()));
         Vertex currentVertex;
         while(!searchQueue.isEmpty()){
-            currentVertex = searchQueue.poll();
+            currentVertex = searchQueue.pollFirst();
+            searchEdges(currentVertex);
+        }
+    }
+
+    public static void dFS(Graph graph, Vertex startingPoint) {
+        alreadySearched.clear();
+        searchQueue.clear();
+        if (!graph.containsVertex(startingPoint)) {
+            System.out.println("Wrong Vertex");
+            return;
+        }
+
+        searchQueue.offer(graph.getVertex(startingPoint.getLabel()));
+        Vertex currentVertex;
+        while(!searchQueue.isEmpty()){
+            currentVertex = searchQueue.pollLast();
             searchEdges(currentVertex);
         }
     }
@@ -30,7 +45,7 @@ public final class BreadthFirstSearch {
             Edge currentEdge = currentVertex.getNeighbour(i);
             if (!alreadySearched.contains(currentEdge)) {
                 alreadySearched.add(currentEdge);
-                searchQueue.offer(currentEdge.getNeighbour(currentVertex));
+                searchQueue.offerLast(currentEdge.getNeighbour(currentVertex));
             }
         }
     }
