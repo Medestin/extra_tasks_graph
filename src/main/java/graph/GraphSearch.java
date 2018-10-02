@@ -53,4 +53,5 @@ public final class GraphSearch {
     public static List<Edge> getAlreadySearched(){
         return new ArrayList<>(alreadySearched);
     }
+
 }

@@ -45,4 +45,5 @@ public class SearchTestSuite {
         System.out.println(GraphSearch.getAlreadySearched());
         Assert.assertEquals(graph.getEdges().size(), GraphSearch.getAlreadySearched().size());
     }
+
 }

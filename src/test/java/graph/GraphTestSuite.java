@@ -33,4 +33,5 @@ public class GraphTestSuite {
         }
         Assert.assertEquals(4, graph.getEdges().size());
     }
+
 }
